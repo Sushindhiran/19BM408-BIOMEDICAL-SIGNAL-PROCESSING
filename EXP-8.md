@@ -31,7 +31,30 @@ Where hd(n) is ideal impulse response.
 
 # MATLAB CODE :
 
+```
+clc;
+clear;
+close all;
+
+N = 20;
+wc = 0.4*pi;
+n = 0:N;
+alpha = N/2;
+
+hd = sin(wc*(n-alpha))./(pi*(n-alpha));
+hd(alpha+1) = wc/pi;
+
+w = hamming(N+1)';
+h = hd.*w;
+
+freqz(h,1);
+title('FIR using Hamming Window');
+```
+
 # OUTPUT GRAPH :
+
+<img width="739" height="301" alt="BSPEXP8FIG1" src="https://github.com/user-attachments/assets/4a4a201f-b92c-4398-bd5e-16f097caaa9f" />
+<img width="768" height="305" alt="BSPEXP8FIG2" src="https://github.com/user-attachments/assets/6d46c7c9-832d-474b-8fbd-3cf36b179545" />
 
 # RESULT :
 The FIR filter was designed using Hamming window .
