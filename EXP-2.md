@@ -29,7 +29,27 @@ Where:
 
 # MATLAB CODE :
 
+```
+clc;
+clear;
+close all;
+x = [1 1 1 1];
+N = length(x);
+X = fft(x);
+disp('DFT of the given signal is:');
+disp(X);
+k = 0:N-1;
+figure;
+stem(k, abs(X), 'filled');
+xlabel('Frequency index k');
+ylabel('|X(k)|');
+title('Magnitude Spectrum of DFT');
+grid on;
+```
+
 # OUTPUT GRAPH :
+
+<img width="741" height="608" alt="BSPEXP2FIG1" src="https://github.com/user-attachments/assets/861e0e4b-06f2-49bd-8962-f0da4999ee8d" />
 
 # Result :
 Thus, the Discrete Fourier Transform of the given discrete-time signal was successfully computed and plotted using MATLAB.
