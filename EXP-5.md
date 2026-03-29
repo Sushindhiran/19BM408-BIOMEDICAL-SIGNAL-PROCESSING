@@ -63,8 +63,39 @@ The steps involved are:
 7.	Verify whether the filter satisfies the given constraints.
 
 # MATLAB CODE :
+```
+clc;
+clear;
+close all;
+T = 1;
+wp = 0.2*pi;
+ws = 0.4*pi;
+Ap = 3;
+As = 21.94;
+Wp = (2/T)*tan(wp/2);
+Ws = (2/T)*tan(ws/2);
+[N, Wn] = buttord(Wp, Ws, Ap, As, 's');
+[b, a] = butter(N, Wn, 's');
+[bd, ad] = bilinear(b, a, 1/T);
+[H, w] = freqz(bd, ad, 1024);
+figure;
+plot(w/pi, abs(H));
+grid on;
+xlabel('Normalized Frequency (\times\pi rad/sample)');
+ylabel('Magnitude');
+title('Magnitude of Butterworth LPF');
+figure;
+plot(w/pi, angle(H));
+grid on;
+xlabel('Normalized Frequency (\times\pi rad/sample)');
+ylabel('Phase (radians)');
+title('Phase angle of Butterworth LPF');
+```
 
 # OUTPUT GRAPH :
+
+<img width="743" height="607" alt="BSPEXP5FIG1" src="https://github.com/user-attachments/assets/e1f09ac4-9148-405c-9f9f-67f556a504e1" />
+<img width="733" height="607" alt="BSPEXP5FIG2" src="https://github.com/user-attachments/assets/cde7c49e-3223-4459-98e4-41bbd591ee08" />
 
 # RESULT:
 A digital Butterworth low pass filter satisfying the given constraints was successfully designed using the bilinear transformation method and its frequency response was verified using MATLAB.
