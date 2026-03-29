@@ -39,7 +39,26 @@ h(n)=h_d (n)⋅w(n)
 
 # MATLAB CODE :
 
+```
+clc;
+clear;
+close all;
+N = 20;
+wc = 0.4*pi;
+n = 0:N;
+alpha = N/2;
+hd = sin(wc*(n-alpha))./(pi*(n-alpha));
+hd(alpha+1) = wc/pi;
+w = rectwin(N+1)';
+h = hd.*w;
+freqz(h,1);
+title('FIR using Rectangular Window');
+```
+
 # OUTPUT GRAPH :
+
+<img width="739" height="329" alt="BSPEXP7FIG1" src="https://github.com/user-attachments/assets/044a1bbf-1c0c-43d6-9d1d-66905fcca186" />
+<img width="756" height="305" alt="BSPEXP7FIG2" src="https://github.com/user-attachments/assets/ae31afd1-890c-4897-8394-3b93119f77d3" />
 
 # RESULT :
 The FIR filter was designed using Rectangular window.
