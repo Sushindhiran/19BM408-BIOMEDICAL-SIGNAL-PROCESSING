@@ -32,7 +32,33 @@ h(n)=h_d (n)⋅w(n)
 
 # MATLAB CODE :
 
+```
+clc;
+clear;
+close all;
+
+N = 20;
+wc = 0.4*pi;
+n = 0:N;
+alpha = N/2;
+
+hd = sin(wc*(n-alpha))./(pi*(n-alpha));
+hd(alpha+1) = wc/pi;
+
+w = hann(N+1)';
+h = hd.*w;
+
+freqz(h,1);
+title('FIR using Hanning Window');
+```
+
 # OUTPUT GRAPH :
+
+<img width="739" height="301" alt="BSPEXP9FIG1" src="https://github.com/user-attachments/assets/3ca4f129-3e4e-4b0a-9c49-ebffa086f68d" />
+<img width="768" height="305" alt="BSPEXP9FIG2" src="https://github.com/user-attachments/assets/c13c7493-4d57-4ab5-9578-49370e95de49" />
+
+DIF-FFT Output:
+  20.0000 + 0.0000i  -5.8284 - 2.4142i   0.0000 + 0.0000i  -0.1716 - 0.4142i   0.0000 + 0.0000i  -0.1716 + 0.4142i   0.0000 + 0.0000i  -5.8284 + 2.4142i
 
 # RESULT :
 The FIR filter was designed using Hanning window.
